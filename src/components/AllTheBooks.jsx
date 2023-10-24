@@ -8,13 +8,13 @@ import { Container, Row, Col } from 'react-bootstrap'
 
 function AllTheBooks() {
   return (
-    <Container>
-      <Row>
-        <div className="d-flex display-5 fw-bold justify-content-center">
-          Libri Fantasy
+    <Container fluid className="bg-dark px-5 pb-5 text-white" >
+      <Row className="mb-5">
+        <div className="d-flex fs-1 justify-content-start my-3">
+        🧌 Fantasy 
         </div>
-        {fantasy.map((books) => (
-          <Col md={3} key={books.asin} className="py-2">
+        {fantasy.slice(0, 4).map((books) => (
+          <Col md={3} key={books.asin} className="p-2">
             <Card className="h-100">
               <Card.Img variant="top" src={books.img} className="h-75" />
               <Card.Body className="d-flex flex-column justify-content-between">
@@ -22,16 +22,17 @@ function AllTheBooks() {
                   {books.title}
                 </Card.Title>
                 <Card.Text>{books.price} €</Card.Text>
+                <button className="btn btn-success">Shop now</button>
               </Card.Body>
             </Card>
           </Col>
         ))}
       </Row>
-      <Row>
-        <div className="d-flex display-5 fw-bold justify-content-center">
-          Libri Fantasy
+      <Row className="mb-5"> 
+        <div className="d-flex fs-1  justify-content-start my-3">
+        🏛 History
         </div>
-        {history.map((books) => (
+        {history.slice(0, 4).map((books)=> (
           <Col md={3} key={books.asin} className="py-2">
             <Card className="h-100">
               <Card.Img variant="top" src={books.img} className="h-75" />
@@ -40,16 +41,17 @@ function AllTheBooks() {
                   {books.title}
                 </Card.Title>
                 <Card.Text>{books.price} €</Card.Text>
+                <button className="btn btn-success">Shop now</button>
               </Card.Body>
             </Card>
           </Col>
         ))}
       </Row>
-      <Row>
-        <div className="d-flex display-5 fw-bold justify-content-center">
-          Libri Horror
+      <Row className="mb-5">
+        <div className="d-flex fs-1  justify-content-start my-3">
+        🧟‍♂️ Horror
         </div>
-        {horror.map((books) => (
+        {horror.slice(0, 4).map((books)=> (
           <Col md={3} key={books.asin} className="py-2">
             <Card className="h-100">
               <Card.Img variant="top" src={books.img} className="h-75" />
@@ -58,16 +60,17 @@ function AllTheBooks() {
                   {books.title}
                 </Card.Title>
                 <Card.Text>{books.price} €</Card.Text>
+                <button className="btn btn-success">Shop now</button>
               </Card.Body>
             </Card>
           </Col>
         ))}
       </Row>
-      <Row>
-        <div className="d-flex display-5 fw-bold justify-content-center">
-          Libri Romance
+      <Row className="mb-5">
+        <div className="d-flex fs-1  justify-content-start my-3">
+        ❤️‍🔥 Romance
         </div>
-        {romance.map((books) => (
+        {romance.slice(0, 4).map((books)=> (
           <Col md={3} key={books.asin} className="py-2">
             <Card className="h-100">
               <Card.Img variant="top" src={books.img} className="h-75" />
@@ -76,16 +79,17 @@ function AllTheBooks() {
                   {books.title}
                 </Card.Title>
                 <Card.Text>{books.price} €</Card.Text>
+                <button className="btn btn-success">Shop now</button>
               </Card.Body>
             </Card>
           </Col>
         ))}
       </Row>
-      <Row>
-        <div className="d-flex display-5 fw-bold justify-content-center">
-          Libri Sci-Fi
+      <Row className="mb-5">
+        <div className="d-flex fs-1  justify-content-start my-3">
+        👨‍🚀 Sci-Fi
         </div>
-        {scifi.map((books) => (
+        {scifi.slice(0, 4).map((books) => (
           <Col md={3} key={books.asin} className="py-2">
             <Card className="h-100">
               <Card.Img variant="top" src={books.img} className="h-75" />
@@ -94,6 +98,7 @@ function AllTheBooks() {
                   {books.title}
                 </Card.Title>
                 <Card.Text>{books.price} €</Card.Text>
+                <button className="btn btn-success">Shop now</button>
               </Card.Body>
             </Card>
           </Col>
