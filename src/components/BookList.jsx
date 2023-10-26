@@ -27,9 +27,9 @@ class BookList extends Component{
             </Form.Group>
           </Col>
         </Row>
-        <Row>
+        <Row className="justify-content-center">
             {this.props.AllTheBooks
-            .slice(0,8)
+            .slice(0,12)
             .filter((oneBook)=>{
                 return oneBook.title
                 .toLowerCase()
@@ -39,6 +39,7 @@ class BookList extends Component{
             .map((oneBook) => {
             return ( 
             <Col  
+            md={3}
             className="p-2 d-flex justify-content-center" 
             key={oneBook.asin}
             style={{width:'18rem'}}>
