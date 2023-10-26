@@ -38,12 +38,10 @@ class BookList extends Component{
  
             .map((oneBook) => {
             return ( 
-            <Col md={3} className="p-2 h-50" key={oneBook.asin}>
+            <Col  className="p-2 h-50 d-flex justify-content-center" key={oneBook.asin}>
             <SingleBook book={oneBook}/>
             </Col>)
             })}
        </Row>
        </Container>)}}
-
-
 export default BookList
