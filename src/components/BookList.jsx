@@ -38,7 +38,10 @@ class BookList extends Component{
  
             .map((oneBook) => {
             return ( 
-            <Col  className="p-2 h-50 d-flex justify-content-center" key={oneBook.asin}>
+            <Col  
+            className="p-2 d-flex justify-content-center" 
+            key={oneBook.asin}
+            style={{width:'18rem'}}>
             <SingleBook book={oneBook}/>
             </Col>)
             })}
