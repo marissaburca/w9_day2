@@ -1,13 +1,22 @@
 import SingleBook from "./SingleBook";
 import {Component} from 'react';
 import { Container , Row, Col, Form} from 'react-bootstrap';
-
+import CommentArea from "./CommentArea";
 
 
 class BookList extends Component{
     state={
         searchValue:'',
+        selected: undefined,
     }
+   /*   */
+
+   setNewState = ()=> {
+    this.setState({
+      selected : true,
+    })
+   }
+
     render () {
       return ( 
         <Container fluid className="bg-dark px-5 pb-5 text-white" >
@@ -28,6 +37,10 @@ class BookList extends Component{
           </Col>
         </Row>
         <Row className="justify-content-center">
+          <Col>
+           <Row>
+
+           
             {this.props.AllTheBooks
             .slice(0,12)
             .filter((oneBook)=>{
@@ -39,13 +52,22 @@ class BookList extends Component{
             .map((oneBook) => {
             return ( 
             <Col  
-            md={3}
-            className="p-2 d-flex justify-content-center" 
+            className="col-3 p-2 d-flex justify-content-center" 
             key={oneBook.asin}
-            style={{width:'18rem'}}>
-            <SingleBook book={oneBook}/>
+           
+            >
+            <SingleBook 
+            book={oneBook}
+            selected={this.state.selected}
+            setNewState={this.setNewState}/>
+
             </Col>)
             })}
+            </Row>
+            </Col>
+            <Col>
+            {this.state.selected &&(<CommentArea bookId={this.book.asin} />)}
+            </Col>
        </Row>
        </Container>)}}
 export default BookList

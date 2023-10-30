@@ -1,5 +1,5 @@
 import { Component } from "react"
-import { ListGroupItem, Row, Col } from "react-bootstrap"
+import { ListGroupItem} from "react-bootstrap"
 import { Trash3Fill } from "react-bootstrap-icons"
 
 
@@ -8,22 +8,21 @@ class SingleComment extends Component {
  render(){
     return(
         <ListGroupItem>
-            <Row>
-                <Col>
+                <div>
                 <p>
                     {
                         this.props.singleReview.comment
                     }
                 </p>
-                </Col>
-                <Col>
+                </div>
+                <div>
                 <p>
                     {
                         this.props.singleReview.rate
                     }
                 </p>
-                </Col>
-                <Col>
+                </div>
+                <div>
                 <Trash3Fill
                style={{ cursor: 'pointer' }}
                onClick={() => {
@@ -51,9 +50,7 @@ class SingleComment extends Component {
                   })
               }}
             />
-            </Col>
-                
-            </Row>
+            </div>
         </ListGroupItem>
     )
  }

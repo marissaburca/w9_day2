@@ -3,9 +3,11 @@ import CommentsList from './CommentsList';
 import AddComment from './AddComment';
 
 
+
 class CommentArea extends Component{
     state={
-       comments:[]
+       comments:[],
+       selected: this.props.selected
    };
 
    getComments= ()=>{
