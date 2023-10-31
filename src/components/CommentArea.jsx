@@ -7,7 +7,6 @@ import AddComment from './AddComment';
 class CommentArea extends Component{
     state={
        comments:[],
-       selected: this.props.selected
    };
 
    getComments= ()=>{
@@ -32,8 +31,10 @@ class CommentArea extends Component{
            console.log('Error', error)
        })
    }
-   componentDidMount(){
-    this.getComments()
+   componentDidUpdate(prevProps,prevState){
+    //bisogna riconoscere ogni cambio di asin selezionato
+    if(prevProps.bookId !== this.props.bookId){
+    this.getComments()}
    }
    render(){
        return(

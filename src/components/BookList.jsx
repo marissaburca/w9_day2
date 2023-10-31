@@ -7,15 +7,15 @@ import CommentArea from "./CommentArea";
 class BookList extends Component{
     state={
         searchValue:'',
-        selected: undefined,
+        selectedAsin: null, //non abbiamo ancora cliccato su nessun libro, rappresenta un solo elemento
     }
    /*   */
-
-   setNewState = ()=> {
+   changeAsin=(newAsin)=>{
     this.setState({
-      selected : true,
+      selectedAsin: newAsin,
     })
    }
+   
 
     render () {
       return ( 
@@ -56,17 +56,20 @@ class BookList extends Component{
             key={oneBook.asin}
            
             >
-            <SingleBook 
+            <SingleBook //deve settare stato di booklist, bisogna fare set state
             book={oneBook}
-            selected={this.state.selected}
-            setNewState={this.setNewState}/>
+            changeAsin={this.changeAsin}
+            selectedAsin ={this.state.selectedAsin}
+            //ogni single book riceve asin del libro corrente selezionato, affinché un solo book riceva il bordo rosso
+            //bisogna comparare gli asin
+           />
 
             </Col>)
             })}
             </Row>
             </Col>
             <Col>
-            {this.state.selected &&(<CommentArea bookId={this.book.asin} />)}
+            <CommentArea bookId={this.state.selectedAsin}/>
             </Col>
        </Row>
        </Container>)}}
