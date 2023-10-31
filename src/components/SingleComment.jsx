@@ -1,24 +1,23 @@
-import { Component } from "react"
 import { ListGroupItem} from "react-bootstrap"
 import { Trash3Fill } from "react-bootstrap-icons"
 
 
 
-class SingleComment extends Component {
- render(){
+const SingleComment =(props)=>{
+
     return(
         <ListGroupItem>
                 <div>
                 <p>
                     {
-                        this.props.singleReview.comment
+                       props.singleReview.comment
                     }
                 </p>
                 </div>
                 <div>
                 <p>
                     {
-                        this.props.singleReview.rate
+                        props.singleReview.rate
                     }
                 </p>
                 </div>
@@ -28,7 +27,7 @@ class SingleComment extends Component {
                onClick={() => {
                 fetch(
                   'https://striveschool-api.herokuapp.com/api/comments/' +
-                    this.props.id,
+                    props.id,
                   {
                     method: 'DELETE',
                     headers: {
@@ -44,7 +43,7 @@ class SingleComment extends Component {
                       throw new Error('Qualquadra non cosa')
                     }
                   })
-                  .then(this.props.refresh)
+                  .then(props.refresh)
                   .catch((err) => {
                     console.log('ERRORE', err)
                   })
@@ -53,7 +52,7 @@ class SingleComment extends Component {
             </div>
         </ListGroupItem>
     )
- }
+ 
 }
    
 

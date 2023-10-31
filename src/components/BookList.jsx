@@ -1,23 +1,20 @@
 import SingleBook from "./SingleBook";
-import {Component} from 'react';
 import { Container , Row, Col, Form} from 'react-bootstrap';
 import CommentArea from "./CommentArea";
+import { useState } from "react";
 
 
-class BookList extends Component{
-    state={
-        searchValue:'',
-        selectedAsin: null, //non abbiamo ancora cliccato su nessun libro, rappresenta un solo elemento
-    }
-   /*   */
-   changeAsin=(newAsin)=>{
-    this.setState({
-      selectedAsin: newAsin,
-    })
-   }
+const BookList= (props)=>{
+    
+       const [searchValue,setSearchValue] = useState('');
+       const [selectedAsin, setSelectedAsin] = useState(null) //non abbiamo ancora cliccato su nessun libro, rappresenta un solo elemento
    
+   /*   */
+   const changeAsin=(newAsin)=>{
 
-    render () {
+    setSelectedAsin(newAsin
+    )
+   }
       return ( 
         <Container fluid className="bg-dark px-5 pb-5 text-white" >
          <Row className="justify-content-center">
@@ -26,11 +23,10 @@ class BookList extends Component{
               <Form.Control
                 type="text"
                 placeholder="Find a book..."
-                value={this.state.searchValue}
+                value={searchValue}
                 onChange={(e) => {
-                  this.setState({
-                    searchValue: e.target.value,
-                  })
+                  setSearchValue(e.target.value,
+                  )
                 }}
               />
             </Form.Group>
@@ -41,12 +37,12 @@ class BookList extends Component{
            <Row>
 
            
-            {this.props.AllTheBooks
+            {props.AllTheBooks
             .slice(0,12)
             .filter((oneBook)=>{
                 return oneBook.title
                 .toLowerCase()
-                .includes(this.state.searchValue.toLocaleLowerCase())
+                .includes(searchValue.toLowerCase())
             })
  
             .map((oneBook) => {
@@ -58,8 +54,8 @@ class BookList extends Component{
             >
             <SingleBook //deve settare stato di booklist, bisogna fare set state
             book={oneBook}
-            changeAsin={this.changeAsin}
-            selectedAsin ={this.state.selectedAsin}
+            changeAsin={changeAsin}
+            selectedAsin ={selectedAsin}
             //ogni single book riceve asin del libro corrente selezionato, affinché un solo book riceva il bordo rosso
             //bisogna comparare gli asin
            />
@@ -69,8 +65,9 @@ class BookList extends Component{
             </Row>
             </Col>
             <Col>
-            <CommentArea bookId={this.state.selectedAsin}/>
+            <CommentArea bookId={selectedAsin}/>
             </Col>
        </Row>
-       </Container>)}}
+       </Container>)
+}
 export default BookList
