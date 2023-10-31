@@ -5,6 +5,12 @@ import { useState, useEffect } from "react";
 const CommentArea = (props) => {
   const [comments, setComments] = useState([]);
 
+  useEffect(() => {
+    if(props.bookId)
+    getComments()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.bookId]);  
+
   const getComments = () => {
     fetch(
       "https://striveschool-api.herokuapp.com/api/comments/" + props.bookId,
@@ -24,7 +30,7 @@ const CommentArea = (props) => {
       })
       .then((arrayOfComments) => {
         setComments(
-          arrayOfComments,
+          arrayOfComments
         );
       })
       .catch((error) => {
@@ -36,9 +42,7 @@ const CommentArea = (props) => {
     if(prevProps.bookId !== this.props.bookId){
     this.getComments()}
    } */
-  useEffect(() => {
-    getComments();
-  }, [props.bookId]);
+
 
   return (
     <div>

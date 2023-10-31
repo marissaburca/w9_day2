@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 
 const AddComment = (props) => {
@@ -8,6 +8,13 @@ const AddComment = (props) => {
     elementId: props.bookId,
   });
 
+  useEffect(()=>{
+    setAddNewComment({
+        ...addNewComment,
+        elementId: props.bookId
+    })
+  },[props.bookId]);
+  
   const sendNewReview = (e) => {
     e.preventDefault()
 
@@ -25,16 +32,8 @@ const AddComment = (props) => {
             console.log(res)
           return res.json();
         } else {
-          throw new Error("Error while recovering comments");
+          throw new Error("Error while posting comment");
         }
-      })
-      .then((data) => {
-        setAddNewComment({
-          comment: "",
-          rate: "1",
-          elementId: props.bookId,
-        });
-        console.log(data)
       })
       .catch((error) => {
         console.log("Error", error);
