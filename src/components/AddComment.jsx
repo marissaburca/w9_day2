@@ -13,6 +13,7 @@ const AddComment = (props) => {
         ...addNewComment,
         elementId: props.bookId
     })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[props.bookId]);
   
   const sendNewReview = (e) => {
