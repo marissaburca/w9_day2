@@ -29,8 +29,14 @@ const AddComment = (props) => {
     })
       .then((res) => {
         if (res.ok) {
-            console.log(res)
-          return res.json();
+            console.log(res);
+            setAddNewComment({
+                comment: "",
+                rate: "1",
+                elementId: props.bookId,
+              });
+            return res.json();
+
         } else {
           throw new Error("Error while posting comment");
         }

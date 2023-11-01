@@ -1,8 +1,6 @@
 import { ListGroupItem} from "react-bootstrap"
 import { Trash3Fill } from "react-bootstrap-icons"
 
-
-
 const SingleComment =(props)=>{
 
     return(
@@ -54,7 +52,4 @@ const SingleComment =(props)=>{
     )
  
 }
-   
-
-
 export default SingleComment
